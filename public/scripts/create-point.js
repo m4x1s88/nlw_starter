@@ -99,8 +99,4 @@ function handleSelectedItem(event) {
 
     collectedItens.value = selectedItens
 
-
-
-
-
 }

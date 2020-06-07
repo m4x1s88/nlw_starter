@@ -26,6 +26,7 @@ server.get("/", (req, res) => {
 })
 
 server.get("/create-point", (req, res) => {
+
     //req.query
     return res.render("create-point.html")
 
@@ -58,7 +59,7 @@ server.post("/savepoint", (req, res) => {
 
     function afterInsertData(err) {
         if (err) {
-            return console.log(err)
+            console.log(err)
             return res.send("erro no Cadastro!")
         }
         console.log("Cadastrado com sucesso")
@@ -76,7 +77,7 @@ server.post("/savepoint", (req, res) => {
 })
 
 server.get("/search", (req, res) => {
-    const search = res.query.search
+    const search = req.query.search
 
     //mostrar pesquisa vazia
     if (search == "") {
@@ -101,7 +102,9 @@ server.get("/search", (req, res) => {
                 total: total
             })
         })
+
 })
+
 
 //inicia o servidor
 server.listen(3000)

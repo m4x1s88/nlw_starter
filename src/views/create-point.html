@@ -106,16 +106,30 @@
         </fieldset>
 
         <button type="submit">
-            Cadastrar ponto de Coleta</button>
+            Cadastrar ponto de Coleta
+        </button>
 
     </form>
 
 {%endblock content%}
 
 {% block modal%}
-    {% if saved %}
-        {%include "partials/point-created.html"%}
-    {% endif %}
+
+    <script>
+        var box = document.getElementById('box');
+
+        document
+            .getElementById('button')
+            .addEventListener('click', function (evt) {
+                var target = evt.target;
+                if (saved) {
+                    {% include "partials/point-created.html" %}
+            } else {
+                {% include "partials/point-falid.html" %}
+        }
+    };
+    </script>
+
 {% endblock modal %}
 
 {% block scripts %}
