@@ -3,6 +3,8 @@ const express = require("express")
 const server = express()
 
 const db = require("./database/db.js")
+var sav = new Boolean(true)
+var saved = new Boolean(false)
 
 //Configurar pasta pública
 server.use(express.static("public"))
@@ -60,13 +62,18 @@ server.post("/savepoint", (req, res) => {
     function afterInsertData(err) {
         if (err) {
             console.log(err)
-            return res.send("erro no Cadastro!")
+            return res.render("create-point.html", {
+                saved: false,
+                sav: false,
+            })
+
         }
         console.log("Cadastrado com sucesso")
         console.log(this)
 
         return res.render("create-point.html", {
-            saved: true
+            saved: true,
+            sav: true,
         })
 
     }

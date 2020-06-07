@@ -65,6 +65,18 @@
                 </div>
 
             </div>
+            <div class="field-group">
+                <div class="field">
+                    <label for="email">E-mail</label>
+                    <input type="text" name='email' required="required">
+
+                </div>
+
+                {# <div class="field">
+                    <label for="address">Número/Complemento</label>
+                    <input type="text" name='address2' required="required">
+                </div> #}
+            </div>
 
         </fieldset>
 
@@ -105,7 +117,7 @@
 
         </fieldset>
 
-        <button type="submit">
+        <button type="submit" id="cad">
             Cadastrar ponto de Coleta
         </button>
 
@@ -115,20 +127,11 @@
 
 {% block modal%}
 
-    <script>
-        var box = dment.getElementById('box');
-
-        document
-            .getElementById('button')
-            .addEventListener('click', function (evt) {
-                var target = evt.target;
-                if (saved) {
-                    {% include "partials/point-created.html" %}
-            } else {
-                {% include "partials/point-falid.html" %}
-        }
-    };
-    </script>
+    {% if (saved == sav) and (sav == true )%}
+        {% include "partials/point-created.html" %}
+    {% elif (saved == sav) and (sav == false )%}
+        {% include "partials/point-falid.html" %}
+    {% endif %}
 
 {% endblock modal %}
 
